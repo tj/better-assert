@@ -1,7 +1,30 @@
 
 # better-assert
 
-  Better assertions for node, reporting the expr, filename, lineno etc
+  Better in-application assertions for node, reporting the expr, filename, lineno etc using [callsite](https://github.com/visionmedia/callsite).
+
+## Installation
+
+    $ npm install better-assert
+
+## Example
+
+```js
+var assert = require('better-assert');
+
+var user = { authenticated: false };
+assert(user.authenticated);
+
+user.authenticated = true;
+assert(user.authenticated);
+
+user.authenticated = 0;
+assert(user.authenticated);
+```
+
+outputting:
+
+![assertions](http://f.cl.ly/items/3Q3Q120q3b3D0F1W2K31/Screenshot.png)
 
 ## License 
 
