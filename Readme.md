@@ -9,6 +9,8 @@
 
 ## Example
 
+ By default assertions are disabled, so the calls to `assert()` will simply be ignored. Use the __ASSERT__ env var to enable:
+
 ```js
 var assert = require('better-assert');
 
@@ -24,7 +26,7 @@ assert(user.authenticated);
 
 outputting:
 
-![assertions](http://f.cl.ly/items/3Q3Q120q3b3D0F1W2K31/Screenshot.png)
+![assertions](http://f.cl.ly/items/1F1W0H0h2T0L233L352o/Screenshot.png)
 
 ## License 
 
