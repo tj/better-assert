@@ -16,9 +16,6 @@
 ```js
 var assert = require('better-assert');
 
-
-var assert = require('./');
-
 test();
 
 function test() {
