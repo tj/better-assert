@@ -1,13 +1,10 @@
 
 var assert = require('./');
 
-assert('wahoo');
+test();
 
-var user = { authenticated: false };
-assert(user.authenticated);
-
-user.authenticated = true;
-assert(user.authenticated);
-
-user.authenticated = 0;
-assert(user.authenticated);
+function test() {
+  var user = { name: 'tobi' };
+  assert('tobi' == user.name);
+  assert('number' == typeof user.age);
+}

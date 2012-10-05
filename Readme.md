@@ -1,7 +1,8 @@
 
 # better-assert
 
-  Better in-application assertions for node, reporting the expr, filename, lineno etc using [callsite](https://github.com/visionmedia/callsite).
+  Better c-style assertions using [callsite](https://github.com/visionmedia/callsite) for
+  self-documenting failure messages.
 
 ## Installation
 
@@ -9,30 +10,39 @@
 
 ## Example
 
- By default assertions are disabled, so the calls to `assert()` will simply be ignored. Use the __ASSERT__ env var to enable:
+ By default assertions are enabled, however the __NO_ASSERT__ environment variable 
+ will deactivate them when truthy.
 
 ```js
 var assert = require('better-assert');
 
-var user = { authenticated: false };
-assert(user.authenticated);
 
-user.authenticated = true;
-assert(user.authenticated);
+var assert = require('./');
 
-user.authenticated = 0;
-assert(user.authenticated);
+test();
+
+function test() {
+  var user = { name: 'tobi' };
+  assert('tobi' == user.name);
+  assert('number' == typeof user.age);
+}
+
+AssertionError: 'number' == typeof user.age
+    at test (/Users/tj/projects/better-assert/example.js:9:3)
+    at Object.<anonymous> (/Users/tj/projects/better-assert/example.js:4:1)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.runMain (module.js:492:10)
+    at process.startup.processNextTick.process._tickCallback (node.js:244:9)
 ```
-
-outputting:
-
-![assertions](http://f.cl.ly/items/1F1W0H0h2T0L233L352o/Screenshot.png)
 
 ## License 
 
 (The MIT License)
 
-Copyright (c) 2011 TJ Holowaychuk &lt;tj@vision-media.ca&gt;
+Copyright (c) 2012 TJ Holowaychuk &lt;tj@vision-media.ca&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
