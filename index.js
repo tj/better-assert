@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -22,7 +21,7 @@ module.exports = process.env.NO_ASSERT
 function assert(expr) {
   if (expr) return;
 
-  var stack = __stack;
+  var stack = callsite();
   var call = stack[1];
   var file = call.getFileName();
   var lineno = call.getLineNumber();
