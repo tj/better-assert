@@ -74,9 +74,12 @@ function readCoffeeLine(file, lineno) {
   var coffee = require('coffee-script');
   var raw = fs.readFileSync(file, 'utf8');
   var noBom = raw.charCodeAt(0) === 0xfeff ? raw.slice(1) : raw;
-  var src = coffee.compile(noBom, {
-    filename: file,
-    literate: coffee.helpers.isLiterate(file)
-  });
+  var options = { filename: file };
+
+  if (coffee.helpers.isLiterate) {
+    options.literate = coffee.helpers.isLiterate(file);
+  }
+
+  var src = coffee.compile(noBom, options);
   return src.split('\n')[lineno-1];
 }
