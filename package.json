@@ -7,4 +7,5 @@
   , "dependencies": { "callsite": "1.0.0" }
   , "main": "index"
   , "engines": { "node": "*" }
+  , "repository": { "type": "git", "url": "https://github.com/visionmedia/better-assert.git" }
 }
