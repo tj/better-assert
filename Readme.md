@@ -35,6 +35,10 @@ AssertionError: 'number' == typeof user.age
     at process.startup.processNextTick.process._tickCallback (node.js:244:9)
 ```
 
+### Browser support
+
+See this fork for use in the browser: https://github.com/devinrhode2/better-assert-browser
+
 ## License 
 
 (The MIT License)
