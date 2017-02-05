@@ -1,8 +1,7 @@
 
 # better-assert
 
-  Better c-style assertions using [callsite](https://github.com/visionmedia/callsite) for
-  self-documenting failure messages.
+  Better c-style assertions for self-documenting failure messages.
 
 ## Installation
 
