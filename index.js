@@ -9,9 +9,9 @@ message='<custom message not provided.'+
 
 module.exports = assert
 
-function assert(test){
+function assert(test,debug=null){
 	if(test()!==true)
-		throw new Error('Assertion false: '+test.toString().split('=>')[1])
+		throw new Error('Assertion {'+test.toString().split('=>')[1]+'} is false!'+(debug==null?'':(' instead '+debug())))
 }
 
 var name='rich'
