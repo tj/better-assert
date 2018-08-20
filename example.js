@@ -1,11 +1,7 @@
 
-var assert = require('./')
+var {assert, is} = require('./')
 
 test()
-
-function reveal(what, iswhat){
-	return eval(`()=>'${what}=='+${JSON.stringify(iswhat)}`)
-}
 
 function test() {
   var user = { name: 'tobi'
@@ -13,8 +9,8 @@ function test() {
 	   }
   
   //assert( ()=>false )
-  assert( ()=>user.name=='tobi', reveal('user.name',user.name) )
-  assert( ()=>typeof user.age=='number', reveal('typeof user.age',typeof user.age) )
+  assert( ()=>user.name=='tobi', is('user.name',user.name) )
+  assert( ()=>typeof user.age=='number', is('typeof user.age',typeof user.age) )
   
   console.log('test ended.')
 }

@@ -1,18 +1,21 @@
-module.exports = assert2
 
-function assert2(test,
-message='<custom message not provided.'+
-' see the stacktrace to see the origin of this error.>'){
-	if(test!==true)
-		throw new Error('Assertion is false: '+message)
+module.exports = { assert, is }
+
+function assert(test_function,debug_facts=null){
+	if(typeof debug_facts=='function') debug_facts=debug_facts()
+	if(test_function()!==true){
+		throw new Error('Assertion {'+
+		test_function.toString().split('=>')[1]+
+		'} is false!'+
+		(debug_facts==null?'':(' in fact ... '+debug_facts)))
+	}
 }
 
-module.exports = assert
-
-function assert(test,debug=null){
-	if(test()!==true)
-		throw new Error('Assertion {'+test.toString().split('=>')[1]+'} is false!'+(debug==null?'':(' instead '+debug())))
+function is(what, iswhat){
+	var repr=iswhat.toString()
+	if(typeof repr=='undefined') repr=JSON.stringify(iswhat)
+	return what+' is '+repr
 }
 
-var name='rich'
-assert(()=>'rich'==name)
+var name='richard'
+assert(()=>name=='richard','name is '+name)
