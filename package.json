@@ -14,9 +14,7 @@
         "TonyHe <coolhzb@163.com>",
         "ForbesLindesay"
     ],
-    "dependencies": {
-        "callsite": "1.0.0"
-    },
+    "dependencies": {},
     "repository": {
         "type": "git",
         "url": "https://github.com/visionmedia/better-assert.git"

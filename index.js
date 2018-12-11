@@ -3,7 +3,6 @@
  */
 
 var AssertionError = require('assert').AssertionError
-  , callsite = require('callsite')
   , fs = require('fs');
 
 /**
@@ -34,7 +33,14 @@ function assert(expr) {
     var lineno = parseInt(m[3]);
     var fullsource = fs.readFileSync(file, 'utf8');
     var line = fullsource.split('\n')[lineno-1];
-    var src = line.match(/.*assert\((.*)\)/)[1];
+    var m = line.match(/assert\((.*)\)/);
+    if (!m) {
+        // however, if the entire file doesn't carry any assert() lines any more,
+        // our next bet is this source file was transpiled by babel:
+        m = line.match(/\(0, [\w_]+\.default\)\((.*)\)/);
+    }
+
+    var src = m ? m[1] : "???";
     var err = new AssertionError({
         message: src + "\n ",
         stackStartFunction: assert
